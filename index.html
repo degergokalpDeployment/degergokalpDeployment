@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PubMed Search</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			color: #4d4d4d;
+			text-align: center;
+			margin-top: 50px;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+
+		label {
+			font-size: 18px;
+			color: #4d4d4d;
+			margin-bottom: 10px;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+			margin-bottom: 20px;
+			width: 400px;
+			max-width: 90%;
+		}
+
+		input[type="submit"] {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		.error {
+			color: red;
+			font-size: 14px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>PubMed Search</h1>
+	<form onsubmit="return searchPubMed()">
+		<label for="pmid">PubMed ID:</label>
+		<input type="text" id="pmid" name="pmid" placeholder="Enter a PubMed ID (e.g. 12345678)">
+		<input type="submit" value="Search">
+		<label for="">allahını seven pmidli aramalı kod yapsın</label>
+		<div id="error" class="error"></div>
+	</form>
+
+	<script>
+		function searchPubMed() {
+			// Get the input value
+			var pmid = document.getElementById("pmid").value;
+
+			// Validate the input
+			if (pmid.trim() === "") {
+				document.getElementById("error").innerHTML = "Please enter a PubMed ID.";
+				return false;
+			}
+
+			// Build the URL and redirect to it
+			var url = "https://pubmed.ncbi.nlm.nih.gov/" + pmid;
+			window.location.href = url;
+
+			return false;
+		}
+	</script>
+</body>
+</html>
